@@ -1,5 +1,6 @@
 from app.extensions.database import db
 from datetime import datetime
+from backports.zoneinfo import ZoneInfo
 from sqlalchemy_serializer import SerializerMixin
 
 class Booking(db.Model, SerializerMixin):
@@ -16,7 +17,7 @@ class Booking(db.Model, SerializerMixin):
     payment_status = db.Column(db.String, default="Pending")  # Pending / Paid / Cancelled
     payment_method = db.Column(db.String)
     total_fare = db.Column(db.Float)
-    booked_at = db.Column(db.DateTime, default=datetime)
+    booked_at = db.Column(db.DateTime, default=lambda: datetime.now(ZoneInfo("Africa/Nairobi")))
     status = db.Column(db.String, default="Active")  # Active / Cancelled / Completed
 
     user = db.relationship("User", back_populates="bookings")
