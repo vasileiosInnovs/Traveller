@@ -1,7 +1,11 @@
 from app.extensions.database import db
+from sqlalchemy_serializer import SerializerMixin
 
-class Bus(db.Model):
+class Bus(db.Model, SerializerMixin):
     __tablename__ = "buses"
+
+    serialize_only = ('name', 'registration_number', 'bus_type', 'total_seats', 'status',)
+    serialize_rules = ('-route.buses', '-schedule.bus')
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
@@ -16,3 +20,6 @@ class Bus(db.Model):
 
     route = db.relationship("Route", back_populates="buses")
     schedules = db.relationship("Schedule", back_populates="bus")
+
+    def __repr__(self):
+        return f'<Bus: {self.name}, Registration Number: {self.registration_number}, Bus Type: {self.bus_type} ,Total seats: {self.total_seats}, Status: {self.status}>'

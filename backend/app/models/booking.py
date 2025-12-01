@@ -1,7 +1,12 @@
 from app.extensions.database import db
 from datetime import datetime
-class Booking(db.Model):
+from sqlalchemy_serializer import SerializerMixin
+
+class Booking(db.Model, SerializerMixin):
     __tablename__ = "bookings"
+
+    serialize_only = ('schedule_id', 'user_id', 'seat_id', 'status')
+    serialize_rules = ('-user.bookings', '-schedule.bookings', '-seat.booking',)
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
