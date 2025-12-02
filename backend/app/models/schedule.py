@@ -12,8 +12,8 @@ class Schedule(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     bus_id = db.Column(db.Integer, db.ForeignKey("buses.id"))
     route_id = db.Column(db.Integer, db.ForeignKey("routes.id"))
-    departure_time = db.Column(db.DateTime, default=lambda: datetime.now(ZoneInfo("Africa/Nairobi")))
-    arrival_time = db.Column(db.DateTime, default=lambda: datetime.now(ZoneInfo("Africa/Nairobi")))
+    departure_time = db.Column(db.DateTime)
+    arrival_time = db.Column(db.DateTime)
     travel_date = db.Column(db.Date)
     frequency = db.Column(db.String)  # Daily / Weekly / One-time
     status = db.Column(db.String, default="Scheduled")  # Scheduled / Cancelled / Completed
