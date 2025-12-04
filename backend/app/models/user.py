@@ -18,6 +18,9 @@ class User(db.Model, SerializerMixin):
     role = db.Column(db.String(50), nullable=True, default="customer")  
     is_verified = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(ZoneInfo("Africa/Nairobi")))
+    otp_code = db.Column(db.String, nullable=True)
+    otp_expiry = db.Column(db.DateTime, nullable=True)
+
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
