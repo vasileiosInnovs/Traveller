@@ -4,4 +4,4 @@ Pipfile.lock
 requirements.txt
 instance/
 migrations
-config
+config/
