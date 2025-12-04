@@ -111,4 +111,4 @@ class Login(Resource):
             return {"error": "Internal server error"}, 500
 
         
-            
+api.add_resource(Login, '/login')

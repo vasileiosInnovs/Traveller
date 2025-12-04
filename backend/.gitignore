@@ -1,0 +1,7 @@
+.env
+Pipfile
+Pipfile.lock
+requirements.txt
+instance/
+migrations
+config
