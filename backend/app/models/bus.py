@@ -1,4 +1,4 @@
-from app.extensions.database import db
+from app.extensions import db
 from sqlalchemy_serializer import SerializerMixin
 
 class Bus(db.Model, SerializerMixin):

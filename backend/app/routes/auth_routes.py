@@ -1,16 +1,12 @@
-
 from datetime import datetime
 from flask import Blueprint, request
 from flask_restful import Api, Resource
-from app.extensions.database import db
+from app.extensions import db, send_email
 
-from app.models.user import User
+from app.models import User, Driver
 from app.services.auth_service import generate_secure_otp, otp_expiry
 
 import traceback
-
-from backend.app.extensions.mailer import send_email
-from backend.app.models.driver import Driver
 
 auth_bp = Blueprint("auth", __name__)
 

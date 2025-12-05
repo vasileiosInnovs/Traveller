@@ -1,4 +1,4 @@
-from app.extensions.database import db
+from app.extensions import db
 from sqlalchemy_serializer import SerializerMixin
 from datetime import datetime
 from backports.zoneinfo import ZoneInfo

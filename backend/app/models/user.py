@@ -1,4 +1,4 @@
-from app.extensions.database import db
+from app.extensions import db
 from datetime import datetime
 from backports.zoneinfo import ZoneInfo
 from werkzeug.security import generate_password_hash, check_password_hash

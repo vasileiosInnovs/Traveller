@@ -1,4 +1,4 @@
-from app.extensions.database import db
+from app.extensions import db
 from sqlalchemy_serializer import SerializerMixin
 
 class Route(db.Model, SerializerMixin):
